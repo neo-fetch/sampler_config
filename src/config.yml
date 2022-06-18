@@ -1,0 +1,94 @@
+gauges:
+  - title: Tesla 3
+    position: [[0, 6], [30, 3]]
+    rate-ms: 50000
+    scale: 2
+    color: 178
+    percent-only: false
+    cur:
+        sample: nvidia-smi | grep -A1 "3  Tesla" | grep -Eo '[0-9]*MiB /' | grep -Eo
+            '[0-9]*'
+    max:
+        sample: echo 32510
+    min:
+        sample: echo 0
+  - title: Tesla 4
+    position: [[30, 0], [24, 3]]
+    rate-ms: 50000
+    scale: 2
+    color: 158
+    percent-only: false
+    cur:
+        sample: nvidia-smi | grep -A1 "4  Tesla" | grep -Eo '[0-9]*MiB /' | grep -Eo
+            '[0-9]*'
+    max:
+        sample: echo 32510
+    min:
+        sample: echo 0
+  - title: Tesla 5
+    position: [[0, 0], [30, 3]]
+    rate-ms: 50000
+    scale: 2
+    color: 128
+    percent-only: false
+    cur:
+        sample: nvidia-smi | grep -A1 "5  Tesla" | grep -Eo '[0-9]*MiB /' | grep -Eo
+            '[0-9]*'
+    max:
+        sample: echo 32510
+    min:
+        sample: echo 0
+  - title: Tesla 7
+    position: [[0, 3], [30, 3]]
+    rate-ms: 50000
+    scale: 2
+    color: 128
+    percent-only: false
+    cur:
+        sample: nvidia-smi | grep -A1 "7  Tesla" | grep -Eo '[0-9]*MiB /' | grep -Eo
+            '[0-9]*'
+    max:
+        sample: echo 32510
+    min:
+        sample: echo 0
+  - title: Tesla 6
+    position: [[54, 0], [26, 3]]
+    rate-ms: 50000
+    scale: 2
+    color: 128
+    percent-only: false
+    cur:
+        sample: nvidia-smi | grep -A1 "6  Tesla" | grep -Eo '[0-9]*MiB /' | grep -Eo
+            '[0-9]*'
+    max:
+        sample: echo 32510
+    min:
+        sample: echo 0
+sparklines:
+  - title: CPU usage
+    position: [[51, 25], [29, 12]]
+    rate-ms: 200
+    scale: 0
+    sample: ps -A -o %cpu | awk '{s+=$1} END {print s}'
+textboxes:
+  - title: Local weather
+    position: [[44, 3], [15, 13]]
+    rate-ms: 100000
+    sample: curl "wttr.in"
+    border: false
+  - title: Docker containers stats
+    position: [[0, 9], [30, 21]]
+    rate-ms: 500
+    sample: docker stats --no-stream --format "table {{.Name}}\t{{.CPUPerc}}\t{{.MemUsage}}\t{{.PIDs}}"
+  - title: Dad Joke
+    position: [[31, 17], [49, 9]]
+    rate-ms: 50000
+    sample: curl -sk "https://icanhazdadjoke.com/"
+asciiboxes:
+  - title: UTC time
+    position: [[0, 30], [51, 11]]
+    rate-ms: 1000
+    color: 43
+    sample: env TZ=Asia/Kolkata date +%r
+    border: false
+    font: 2d
